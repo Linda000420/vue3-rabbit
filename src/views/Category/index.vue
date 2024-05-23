@@ -2,16 +2,21 @@
 import { getCategoryAPI } from '@/apis/category'
 import { getBannerAPI } from '@/apis/home'
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 import GoodsItem from '@/components/GoodsItem.vue'
 
 // 获取分类数据
 const categoryData = ref({})
 const route = useRoute()
-const getCategoryData = async () => {
-  const res = await getCategoryAPI(route.params.id)
+const getCategoryData = async (id = route.params.id) => {
+  const res = await getCategoryAPI(id)
   categoryData.value = res.result
 }
+
+// 路由变化，数据接口重新发送
+onBeforeRouteUpdate((to) => {
+  getCategoryData(to.params.id)
+})
 
 // 获取 banner 数据
 const bannerList = ref({})
