@@ -14,3 +14,8 @@ export function getNewAPI () {
 export function getHotAPI () {
   return httpInstance.get('/home/hot')
 }
+
+// 所有商品
+export function getGoodsAPI () {
+  return httpInstance.get('/home/goods')
+}
