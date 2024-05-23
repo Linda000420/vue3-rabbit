@@ -1,8 +1,15 @@
 import httpInstance from '@/utils/http'
 
 // 获取轮播图数据
-export function getBannerAPI () {
-  return httpInstance.get('/home/banner')
+export function getBannerAPI (params) {
+  // 默认 1，商品 2
+  const { distributionSite = '1' } = params
+  return httpInstance({
+    url: '/home/banner',
+    params: {
+      distributionSite
+    }
+  })
 }
 
 // 新鲜好物
