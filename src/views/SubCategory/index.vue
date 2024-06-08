@@ -30,6 +30,12 @@ const getGoodList = async () => {
 onMounted(() => {
   getGoodList()
 })
+
+// tab切换回调
+const tabChange = () => {
+  reqData.value.page = 1
+  getGoodList()
+}
 </script>
 
 <template>
@@ -43,8 +49,8 @@ onMounted(() => {
         <el-breadcrumb-item>{{ categoryData.name }}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
-    <div class="sub-container">
-      <el-tabs>
+    <div class="sub-container" @tab-change="tabChange">
+      <el-tabs v-model="reqData.sortField">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
