@@ -19,3 +19,14 @@ export function getCategoryFilterAPI (id) {
     }
   })
 }
+
+// 获取导航数据
+// data{
+//   categoryId,
+//   page: 1,
+//   pageSize: 20,
+//   sortField: 'publishTime' | 'orderNum' | 'evaluateNum'
+// }
+export function getSubCategoryAPI (data) {
+  return httpInstance.post('/category/goods/temporary', data)
+}
