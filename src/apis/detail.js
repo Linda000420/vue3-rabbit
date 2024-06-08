@@ -9,3 +9,15 @@ export function getDetailAPI (id) {
     }
   })
 }
+
+// 获取热榜商品
+export function getHotGoodsAPI ({ id, type, limit = 3 }) {
+  return httpInstance({
+    url: '/goods/hot',
+    params: {
+      id,
+      type,
+      limit
+    }
+  })
+}
