@@ -42,7 +42,7 @@ const disabled = ref(false)
 const load = async () => {
   reqData.value.page++
   const res = await getSubCategoryAPI(reqData.value)
-  goodList.value = [...goodList.value, ...res.result.items]
+  goodList.value.items = [...goodList.value.items, ...res.result.items]
   // 加载完毕，停止监听
   if (res.result.items.length === 0) {
     disabled.value = true
